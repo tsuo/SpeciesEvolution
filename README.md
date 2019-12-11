@@ -1,23 +1,23 @@
-DAN TRAN
+# DAN TRAN
 
-SPECIES EVOLUTION PROJECT
-
-
+# SPECIES EVOLUTION PROJECT
 
 
-*Small World & Small Eden:*
 
 
-*Small World & Large Eden:*
+## Small World & Small Eden:
 
 
-*Large World & Small Eden:*
+## Small World & Large Eden:
 
 
-*Large World & Large Eden:*
+## Large World & Small Eden:
 
 
-*Other:*
+## Large World & Large Eden:
+
+
+## Other:
 
 
 
