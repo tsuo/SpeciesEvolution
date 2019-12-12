@@ -23,19 +23,29 @@ Reproduction Threshold t
 ```
 
 `h` : height
+
 `w` : width
+
 `n` : energy received from eating plant
+
 `t` : once an animal's reach this value, it will reproduce
+
 `i` : the y location of animal in world
+
 `j` : the x location of animal in world
+
 `d` : direction the animal is facing {0 ... 7}
+
 `e` : energy of the animal
+
 `g` : the genetics of the animal (`g > 0`)
 
 
 
-**OUTPUTS ARE IN THE** `test` **DIRECTORY**
+**OUTPUTS ARE IN THE** `test/` **DIRECTORY**
 
+
+---
 
 ## Introduction to Simulation
 This simulation is performed under the hypothesis that there are two distinct types of species when an Eden is placed in the world. In the Eden, food is more abundant so animals that circle the Eden would reproduce more children with the same circling genetics. Likewise, for the wandering animals, they would produce more children with forward movement to traverse the map for food.
@@ -47,6 +57,9 @@ world-eden.wdf
 world-largemap-smalleden.wdf
 ```
 
+
+
+---
 
 ## Experiment #1 - NO EDEN x1,000
 ```bash
@@ -67,6 +80,11 @@ Outputs are in the `test/` directory. The population total up to 47.
 Observing the locations of the animals, they all seem random due to not having an Eden.
 
 
+
+
+
+---
+
 ## Experiment #2 - NO EDEN x10,000
 This is the same as experiment 1 but with 10000 steps
 ```bash
@@ -75,6 +93,11 @@ This is the same as experiment 1 but with 10000 steps
 `world.wdf` content: Same as Experiment #1
 
 The population total up to 62. After 9000 steps the population only increase by 15. Still, the locations all appear scattered and random. However there are a couple of dominant g[0] animals.
+
+
+
+
+---
 
 ## Experiment #3 - NO EDEN x100,000
 ```bash
@@ -91,6 +114,11 @@ The population total up to 86.
 ```
 Above are 4 of the animals stats from this experiment. There is an obvious trait of having dominant g[0] g[1] and g[7] because there is no eden. Those three dominant genes are genes that make the animal travel forward. More forward movement implies less looping; There is no need for looping because there is no Eden.
 
+
+
+
+---
+
 ## Experiment #4 - NO EDEN x1,000,000 & x10,000,000
 ```bash
 ./evolution 1000000 323 <world.wdf >tests/out-no-eden-1000000.wdf
@@ -101,6 +129,10 @@ Above are 4 of the animals stats from this experiment. There is an obvious trait
 At this point, g[0] completely dominates all other genes. There are some levels of g[1] and g[7] but g[0] outscales them all. 
 Also, the population seems to have peaked: They were 83 and 74 respectively. In fact the population decreased slightly.
 
+
+
+
+---
 
 ## Experiment #5 - WITH EDEN x1,000
 ```bash
@@ -119,6 +151,10 @@ Reproduction Threshold 300		# threshold for multiplying
 This experiment has an Eden size of 10 x 10. The population was a lot higher than the experiments with no eden, being 212. With only 1000 iterations, there are no noticeable pattern in the genetics.
 
 
+
+
+---
+
 ## Experiment #6 - WITH EDEN x1,000,000
 ```bash
 ./evolution 1000000 323 <world-eden.wdf >tests/out-with-eden-1000000.wdf
@@ -127,6 +163,10 @@ This experiment has an Eden size of 10 x 10. The population was a lot higher tha
 
 The population went down to 159. There is now a distinct separation between two groups. Thanks to the output file being sorted, the top half are filled with g[0], g[1], and g[7] dominated animals. The lower portion of the output show animals with dominant g[2], g[3], g[4], and g[5] genes. g[3] and g[5] are the most dominate out of the four. 
 
+
+
+
+---
 
 ## Experiment #7 - WITH EDEN - x10,000,000
 ```bash
@@ -139,6 +179,10 @@ The first species have dominant g[0] gene, with sub dominant g[7] and somewhat d
 
 The first species strongly indicated forward movements. The second species strongly indicated circling movements. This means that there are wandering animals that scavenge the entire map and there are circling animals that circles the Eden. This proves the initial hypothesis for this experiment to be true.
 
+
+
+
+---
 
 ## Experiment #8 - LARGE MAP, SMALL EDEN - x1,000
 ```bash
@@ -157,6 +201,9 @@ Reproduction Threshold 300		# threshold for multiplying
 Animals are scattered around everywhere. There is no noticeable pattern in genetics.
 
 
+
+---
+
 ## Experiment #9 - LARGE MAP, SMALL EDEN - x1,000,000
 ```bash
 ./evolution 1000000 323 <world-largemap-smalleden.wdf >tests/out-largemap-smalleden-1000000.wdf
@@ -174,6 +221,8 @@ Reproduction Threshold 300		# threshold for multiplying
 The entire population of 75 is now has dominant g[4] gene with subdominant g[3] and g[5] genes with the lowest level of forward-moving genes. Even with a small Eden, the populations eventually get dominated by circling species. This is most likely because animals wander the huge world and die from hunger, and the only ones left are the few that circles the eden. Eventually those few repopulate and their genetics dominate.
 
 
+
+---
 
 ## Conclusion and Other Statements
 
