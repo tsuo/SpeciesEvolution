@@ -5,7 +5,7 @@
 
 ## Instructions
 
-```bash
+```shell
 $> make
 $> ./evolution n <infile.wdf >outfile.wdf
 ```
