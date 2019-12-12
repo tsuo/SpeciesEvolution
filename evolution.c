@@ -265,9 +265,9 @@ static void evolve_with_figs(world *world, unsigned int n)
 static void show_usage(char *progname)
 {
 	fprintf(stderr, 
-		"Usage: %s n [f] <infile >outfile\n" 
+		"Usage: %s n [s] <infile >outfile\n" 
 		"n >= 0 : (required) number of updates\n"
-		"f >= 0 : (optional) number of snapshots after n updates\n"
+		"s  > 0 : (optional) random seed\n"
 		"Reads World Definition from infile, performs\n"
 		"n updates, and writes result to outfile\n", progname);
 }
@@ -276,6 +276,7 @@ int main(int argc, char **argv)
 {
 	unsigned long int n;		// number of updates
 	unsigned long int f = 0;	// number of figures to generate
+	unsigned long int s = 1;
 	world World;
 	world *world = &World;
 	int exit_status = EXIT_FAILURE;
@@ -294,7 +295,7 @@ int main(int argc, char **argv)
 		goto cleanup;
 	}
 
-	if(argc > 2 && sscanf(argv[2], "%lu", &f) != 1)
+	if(argc > 2 && sscanf(argv[2], "%lu", &s) != 1)
 	{
 		show_usage(argv[0]);
 		goto cleanup;
@@ -303,12 +304,15 @@ int main(int argc, char **argv)
 	if(!read_wdf(world))
 		goto cleanup;
 	
+	if(s>1)
+		srand(s);	
 
 	initialize_plants(world);
 
 	evolve(world, n);
-	if(f>0)
-		evolve_with_figs(world, f);
+	
+	//if(f>0)
+	//	evolve_with_figs(world, f);
 		
 	point eden_center;
 	eden_center.i = (world->world_h - 1)/2;
@@ -317,7 +321,7 @@ int main(int argc, char **argv)
 	exit_status = EXIT_SUCCESS;
 
 	write_wdf(world);
-	fprintf(stderr, "post2\n");
+	fprintf(stderr, "SEED: %lu\n", s);
 
 cleanup:
 	free_matrix(world->plants);

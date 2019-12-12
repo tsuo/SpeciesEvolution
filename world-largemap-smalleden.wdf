@@ -1,5 +1,5 @@
-World 100 100				# world height and width
-Eden 0 0				# eden height and width
+World 100000 100000				# world height and width
+Eden 5 5				# eden height and width
 Plant Energy 80				# energy received from food
 Reproduction Threshold 300		# threshold for multiplying
 (0 0) 0 200 | 5 5 5 5 5 5 5 5 |		# from here on is critter stats
